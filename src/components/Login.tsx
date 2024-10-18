@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
+import { useAuth } from "./AuthContext";
 
 interface LoginProps {
   onSubmit: (email: string, password: string) => void;
@@ -8,10 +9,12 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onSubmit }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit(email, password);
+    login();
   };
 
   return (
