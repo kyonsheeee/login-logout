@@ -15,7 +15,7 @@ const Login: React.FC<LoginProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="Login">
       <form onSubmit={handleSubmit}>
         <h2>ログイン</h2>
         <label>

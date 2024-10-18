@@ -8,7 +8,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <Login onSubmit={handleLogin} />
     </div>
   );
