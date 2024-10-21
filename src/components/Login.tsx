@@ -12,18 +12,24 @@ const Login: React.FC<LoginProps> = ({ onSubmit }) => {
   const [password, setPassword] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSubmit(email, password);
-    login(email, password);
-    navigate("/");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const success = await login(email, password);
+    if (success) {
+      onSubmit(email, password);
+      navigate("/");
+    } else {
+      setError("メールアドレスまたはパスワードが間違っています。");
+    }
   };
 
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
         <h2>ログイン</h2>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <label>
           メールアドレス
           <input

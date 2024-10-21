@@ -7,8 +7,8 @@ import Top from "./pages/Top";
 import PrivateRoute from "./components/PrivateRoute";
 
 const App: React.FC = () => {
-  const handleLogin = (email: string, password: string) => {
-    console.log("email: ", email, "password: ", password);
+  const handleLogin = (email: string) => {
+    console.log("email: ", email);
   };
 
   return (
