@@ -11,6 +11,12 @@ const App: React.FC = () => {
     console.log("email: ", email);
   };
 
+  const handleClick = async () => {
+    const response = await fetch("api/hello");
+    const text = await response.text();
+    alert(text);
+  };
+
   return (
     <div className="App">
       <AuthProvider>
@@ -21,6 +27,7 @@ const App: React.FC = () => {
           </Routes>
         </Router>
       </AuthProvider>
+      <button onClick={handleClick}>Say Hello</button>
     </div>
   );
 };
